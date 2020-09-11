@@ -19,9 +19,22 @@ def create_movie(title, overview, release_date, poster_path):
     return movie
 
 
-def return_movies ():
+# Part3
+def return_movies():
     """Return all movies."""
     return Movie.query.all()
+
+
+# Part3
+def get_movie_by_id(movie_id):
+    """Return the movie based on the movie_id"""
+    return Movie.query.get(movie_id)
+
+
+# Part3
+def return_users():
+    """Return all users"""
+    return User.query.all()
 
 
 def create_rating(user, movie, score):

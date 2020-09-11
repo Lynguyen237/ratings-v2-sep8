@@ -32,9 +32,33 @@ def homepage():
 def all_movies():
     "Show all movies"
 
-    movies2 = crud.return_movies()
+    movie_list = crud.return_movies()
 
-    return render_template('all_movies.html', movies=movies2)
+    return render_template('all_movies.html', all_movie=movie_list)
+
+
+# The <movie_id2> is used as the argument input for movie_details function
+@app.route('/movies/<movie_id2>')
+def movie_details(movie_id2):
+    "Show Movie detail"
+    
+    movie_detail = crud.get_movie_by_id(movie_id2)
+
+    # 'movie' on the left is the variable in the .html5
+    # This will be dynamically changed based on the movie_detail information returned
+    # by the function get_movie_by_id in the crud file
+    return render_template('movie_details.html', movie=movie_detail)
+
+
+@app.route('/users')
+def user_info():
+    "Show user emails and link to their profiles"
+    
+    user_list = crud.return_users()
+
+    return render_template('All_users.html', all_users=user_list)
+
+
 
 if __name__ == '__main__':
     # Lastly, connect to your database before app.run gets called. 

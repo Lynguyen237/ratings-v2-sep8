@@ -34,8 +34,16 @@ def get_movie_by_id(movie_id):
 # Part3
 def return_users():
     """Return all users"""
+    
     return User.query.all()
 
+
+# Part4
+def get_user_by_email(email):
+    """Return a user with that email if it exists; otherwise, it should return None."""
+    
+    return User.query.filter(User.email == email).first()
+        
 
 def create_rating(user, movie, score):
 
